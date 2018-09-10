@@ -1,0 +1,8 @@
+{
+  "flickr_api_key": "your flickr API key",
+  "flickr_api_secret": "your flickr API secret",
+
+  "number_of_training_images": 5000,
+  "number_of_validation_images": 1000,
+  "number_of_test_images": 20
+}
