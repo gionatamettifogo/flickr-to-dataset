@@ -17,11 +17,9 @@ import os
 import glob
 import random
 import shutil
-from pprint import pprint
-
-import times
 import requests
 import flickr_api
+from pprint import pprint
 
 config = json.load(open('./config.json'))
 
