@@ -16,6 +16,7 @@ import json
 import os
 import glob
 import random
+import shutil
 from pprint import pprint
 
 import times
@@ -31,9 +32,10 @@ IMAGE_URL = 'http://farm%s.staticflickr.com/%s/%s_%s_z.jpg'
 flickr_api.set_keys(api_key=API_KEY, api_secret=API_SECRET)
 
 IMAGE_FILENAME = '%s-%s.jpg'  # keyword-id.jpg'
-TRAINING_DIRECTORY = './data/train/%s/'  # keyword
-VALIDATION_DIRECTORY = './data/valid/%s/'  # keyword
-TEST_DIRECTORY = './data/test/%s/' 
+DATA_DIRECTORY = './data/'
+TRAINING_DIRECTORY = os.path.join(DATA_DIRECTORY, 'train/%s/')  # keyword
+VALIDATION_DIRECTORY = os.path.join(DATA_DIRECTORY, 'valid/%s/')  # keyword
+TEST_DIRECTORY = os.path.join(DATA_DIRECTORY, 'test/%s/') 
 
 NUMBER_OF_TRAINING_IMAGES = config['number_of_training_images']
 NUMBER_OF_VALIDATION_IMAGES = config['number_of_validation_images']
@@ -135,6 +137,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.create:
+        # remove old data if found
+        shutil.rmtree(DATA_DIRECTORY, ignore_errors=True)
         keywords = []
         with open('keywords.txt') as f:
             keywords = [e.strip() for e in f.readlines()]
