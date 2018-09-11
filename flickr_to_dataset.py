@@ -108,7 +108,7 @@ def search_and_download_images(keyword):
             print('there are not enough photos of \'%s\'' % keyword)
             return False
 
-        for i, photo in enumerate(images['photos']['photo']):
+        for _, photo in enumerate(images['photos']['photo']):
             image_filename = os.path.join(directory, IMAGE_FILENAME % (keyword, photo['id']))
             if download_image(photo, image_filename):
                 sys.stdout.write('\rdownloaded photo %d/%d (%s)' % 
